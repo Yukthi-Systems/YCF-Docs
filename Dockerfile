@@ -1,6 +1,10 @@
 # Stage 1: Build the application
 FROM node:21.5-alpine3.18 AS builder
 
+# git is required at build time: Docusaurus's showLastUpdateAuthor/showLastUpdateTime
+# read `git log` per doc file, and Alpine's base image doesn't ship git.
+RUN apk add --no-cache git
+
 # Set the working directory for the build stage
 WORKDIR /app
 
@@ -10,7 +14,8 @@ COPY package*.json ./
 # Install dependencies
 RUN npm install
 
-# Copy the application source code into the container
+# Copy the application source code into the container — includes .git, which the
+# last-updated feature above needs. Don't add a .dockerignore entry for .git.
 COPY . .
 
 # Build the application

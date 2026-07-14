@@ -1,0 +1,8 @@
+# Note: .git is intentionally NOT excluded here — Docusaurus's
+# showLastUpdateAuthor/showLastUpdateTime read git history per doc file at build
+# time, and need .git present in the build context to do that.
+
+node_modules
+build
+.docusaurus
+logs

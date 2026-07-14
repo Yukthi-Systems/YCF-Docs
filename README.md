@@ -38,6 +38,13 @@ npm run serve
 
 Serves that production build locally.
 
+Each doc page shows a "Last updated on ... by ..." line, sourced from `git log` for
+that file (`showLastUpdateAuthor`/`showLastUpdateTime` in `docusaurus.config.ts`).
+That means the build needs real git history to read from — a shallow clone
+(`git clone --depth 1`, or CI's default `actions/checkout`) means every page shows the
+same single commit instead of its actual last change. Use `fetch-depth: 0` in any CI
+checkout step that builds this site.
+
 ## Contributing
 
 See [Open Source & Contributing](https://yukthi-systems.github.io/Yukthi-Content-Filter-Docs/open-source)
