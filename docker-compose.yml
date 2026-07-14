@@ -1,0 +1,10 @@
+services:
+  ycf-docs:
+    # build: .
+    image: rjyspl/ycf-docs:latest
+    container_name: ycf-docs
+
+    ports:
+      - '127.0.0.1:8684:3000'
+
+    restart: always

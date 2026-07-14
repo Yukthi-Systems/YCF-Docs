@@ -1,0 +1,70 @@
+/**
+ * Theme overrides for YCF. Amber/orange instead of Webmail's indigo, so the two docs
+ * sites don't look like reskins of each other — still one flat accent color, no
+ * gradients on the accent itself.
+ */
+
+:root {
+  --ifm-color-primary: #b45309;
+  --ifm-color-primary-dark: #a24908;
+  --ifm-color-primary-darker: #984507;
+  --ifm-color-primary-darkest: #7c3906;
+  --ifm-color-primary-light: #c65d0a;
+  --ifm-color-primary-lighter: #d0670f;
+  --ifm-color-primary-lightest: #e58a2f;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(180, 83, 9, 0.1);
+
+  --ycf-accent: #b45309;
+  --ycf-hero-bg: #f8f7f4;
+  --ycf-surface: #ffffff;
+  --ycf-border: rgba(15, 23, 42, 0.08);
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #f0a94f;
+  --ifm-color-primary-dark: #ec9a35;
+  --ifm-color-primary-darker: #ea9228;
+  --ifm-color-primary-darkest: #c97a17;
+  --ifm-color-primary-light: #f4b869;
+  --ifm-color-primary-lighter: #f5be76;
+  --ifm-color-primary-lightest: #f9d4a2;
+  --docusaurus-highlighted-code-line-bg: rgba(240, 169, 79, 0.15);
+
+  --ycf-accent: #f0a94f;
+  --ycf-hero-bg: #12100b;
+  --ycf-surface: #1a1712;
+  --ycf-border: rgba(255, 255, 255, 0.08);
+
+  --ifm-background-color: #12100b;
+  --ifm-background-surface-color: #1a1712;
+  --ifm-navbar-background-color: #12100bcc;
+  --ifm-footer-background-color: #0c0a07;
+}
+
+/* Same trick as webmail-docs: a grid of thin lines plus a couple of soft radial
+   glows in the accent color, faded out toward the bottom. Kept as plain CSS, not
+   Tailwind utilities, because of the mask-image and the stacked backgrounds. */
+.homepage-hero-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(50% 55% at 82% 6%, color-mix(in srgb, var(--ycf-accent) 13%, transparent), transparent 70%),
+    radial-gradient(38% 45% at 10% 90%, color-mix(in srgb, var(--ycf-accent) 8%, transparent), transparent 70%),
+    linear-gradient(var(--ycf-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--ycf-border) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 56px 56px, 56px 56px;
+  mask-image: linear-gradient(#000 55%, transparent);
+  -webkit-mask-image: linear-gradient(#000 55%, transparent);
+  opacity: 0.6;
+}
+
+.homepage-cta-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(60% 90% at 50% -20%, color-mix(in srgb, var(--ycf-accent) 16%, transparent), transparent 70%),
+    radial-gradient(45% 70% at 85% 110%, color-mix(in srgb, var(--ycf-accent) 9%, transparent), transparent 70%);
+}
