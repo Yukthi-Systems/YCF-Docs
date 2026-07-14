@@ -39,6 +39,8 @@ const config: Config = {
           routeBasePath: "docs",
           sidebarPath: "./sidebars.ts",
           editUrl: `https://github.com/${GITHUB_ORG}/${GITHUB_REPO}/tree/main/`,
+          showLastUpdateAuthor: true,
+          showLastUpdateTime: true,
         },
         blog: false,
         theme: {
